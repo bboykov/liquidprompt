@@ -177,6 +177,7 @@ prompt-building process:
 * `LP_ENABLE_FQDN`, if you want the display of the fully qualified domain name
 * `LP_ENABLE_TIME`, if you want to display the time at which the prompt was shown
 * `LP_TIME_ANALOG`, if you want to show the time using an analog clock instead of numeric values
+* `LP_ENABLE_KUBECONTEXT`, if you want to show the current Kubernetes context
 
 Note that if required commands are not installed, enabling the corresponding
 feature will have no effect. Also, all the `LP_ENABLE_…` variables override the
@@ -313,6 +314,8 @@ Set the variable to a null string (`""`) if you do not want color.
     * `LP_COLOR_CHARGING_UNDER` charging but under threshold
     * `LP_COLOR_DISCHARGING_ABOVE` discharging but above threshold
     * `LP_COLOR_DISCHARGING_UNDER` discharging and under threshold
+* Kubernetes
+    * `LP_COLOR_KUBERNETES` current kubectl context
 
 
 ### Special Characters
@@ -336,6 +339,7 @@ Set the variable to a null string (`""`) if you do not want color.
 * `LP_MARK_BRACKET_CLOSE` (default: "]") marks around the main part of the prompt
 * `LP_MARK_PERM` (default: ":") colored green red or green to indicate write
   permissions of the current directory
+* `LP_MARK_KUBECONTEXT` (default: "☸") prompt mark for Kubernetes context
 * `LP_TITLE_OPEN` (default: "\e]0;") escape character opening a window's title
 * `LP_TITLE_CLOSE` (default: "\a") escape character closing a window's title
 
