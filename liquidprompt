@@ -359,6 +359,7 @@ _lp_source_config()
     LP_MARK_PREFIX="${LP_MARK_PREFIX:-" "}"
     LP_MARK_PERM="${LP_MARK_PERM:-":"}"
     LP_MARK_KUBECONTEXT=${LP_MARK_KUBECONTEXT:-"☸ "}
+    LP_DELIMITER_KUBECONTEXT=${LP_DELIMITER_KUBECONTEXT:-"-"}
 
     LP_COLOR_PATH=${LP_COLOR_PATH:-$BOLD}
     LP_COLOR_PATH_ROOT=${LP_COLOR_PATH_ROOT:-$BOLD_YELLOW}
@@ -1474,7 +1475,12 @@ _lp_kube_context()
 {
    (( LP_ENABLE_KUBECONTEXT )) || return
 
-   kubectl config current-context 2>/dev/null
+   local _LP_KUBE_CONTEXT=$(kubectl config current-context 2>/dev/null)
+   if [[ "$LP_DELIMITER_KUBECONTEXT" ]]; then
+     echo "${_LP_KUBE_CONTEXT%%${LP_DELIMITER_KUBECONTEXT}*}"
+   else
+     echo "$_LP_KUBE_CONTEXT"
+   fi
 }
 
 ###############

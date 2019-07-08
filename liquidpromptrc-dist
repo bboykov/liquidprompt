@@ -165,4 +165,9 @@ LP_DISABLED_VCS_PATH=""
 # Show current Kubernetes kubectl context
 LP_ENABLE_KUBECONTEXT=1
 
+# Delimiter to shorten kubectl context.
+# E.g. when your context names are dev-cluster and test-cluster, set to "-"
+# in order to output "dev" and "test" in prompt.
+LP_DELIMITER_KUBECONTEXT=
+
 # vim: set et sts=4 sw=4 tw=120 ft=sh:
