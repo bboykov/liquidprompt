@@ -1476,10 +1476,11 @@ _lp_kube_context()
    (( LP_ENABLE_KUBECONTEXT )) || return
 
    local _LP_KUBE_CONTEXT=$(kubectl config current-context 2>/dev/null)
+   local _LP_KUBE_CONTEXT_NS=$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)
    if [[ "$LP_DELIMITER_KUBECONTEXT" ]]; then
-     echo "${_LP_KUBE_CONTEXT%%${LP_DELIMITER_KUBECONTEXT}*}"
+     echo "${_LP_KUBE_CONTEXT%%${LP_DELIMITER_KUBECONTEXT}*}|${_LP_KUBE_CONTEXT_NS}"
    else
-     echo "$_LP_KUBE_CONTEXT"
+     echo "$_LP_KUBE_CONTEXT|${_LP_KUBE_CONTEXT_NS}"
    fi
 }
 
